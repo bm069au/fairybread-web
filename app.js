@@ -1487,18 +1487,25 @@ async function autoUpdateLatestRelease() {
     const rawTag = release.tag_name; // e.g. "v0.9.1-beta" or "v0.9.1d"
     const cleanTag = rawTag.replace(/-beta$/i, '');
 
-    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.9.1d)
-    const currentSiteVersion = 'v0.9.1d';
+    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.9.1e)
+    const currentSiteVersion = 'v0.9.1e';
     if (cleanTag < currentSiteVersion) {
       console.log(`[Fairybread] GitHub latest release (${cleanTag}) is older than site version (${currentSiteVersion}); keeping current version.`);
       return;
     }
 
-    // Locate the Windows setup zip asset
-    const zipAsset = (release.assets || []).find((a) =>
-      a.name.toLowerCase().endsWith('.zip') &&
-      (a.name.toLowerCase().includes('setup') || a.name.toLowerCase().includes('installer') || a.name.toLowerCase().includes('win'))
-    ) || (release.assets || [])[0];
+    // Locate the Windows setup zip asset (preferring Public non-developer setup zip)
+    const assets = release.assets || [];
+    const zipAsset =
+      assets.find((a) => {
+        const n = a.name.toLowerCase();
+        return n.endsWith('.zip') && !n.includes('developer') && (n.includes('setup') || n.includes('installer') || n.includes('win'));
+      }) ||
+      assets.find((a) => {
+        const n = a.name.toLowerCase();
+        return n.endsWith('.zip') && (n.includes('setup') || n.includes('installer') || n.includes('win'));
+      }) ||
+      assets[0];
 
     const downloadUrl = zipAsset
       ? zipAsset.browser_download_url
