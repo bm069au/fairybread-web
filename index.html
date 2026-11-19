@@ -3,38 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fairybread.me — Democratic Multi-AI Council, 100% Local Shared Memory & Community Hub</title>
-  <meta name="description" content="Replace ChatGPT Plus, Claude Pro, and Grok lock-in with Fairybread: an 8-AI democratic council desktop app with 100% local Shared Memory, Live Voice Mode, 300-DPI Image Studio, and Autonomous Experimental Mode." />
+  <title>Fairybread.me — Democratic Multi-AI Council, 100% Local Shared Memory &amp; Experimental AI Lab</title>
+  <meta name="description" content="Replace ChatGPT Plus, Claude Pro, and Grok subscription lock-in with Fairybread: a multi-AI democratic council desktop app with 100% local Shared Memory, Live Voice Mode, 300-DPI Image Studio, and Autonomous Experimental Mode." />
+  <link rel="icon" type="image/png" href="fairybread_icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <!-- Top Sprinkles Accent Bar -->
   <div class="sprinkle-bar"></div>
 
-  <!-- Header / Navigation -->
+  <!-- Header / Navigation (Public Display Page — No Login Required) -->
   <header class="site-header">
     <div class="header-inner">
       <div class="brand" onclick="switchTab('home')">
-        <span class="brand-icon">🧚</span>
+        <img src="fairybread_icon.png" alt="Fairybread Fairy Logo" class="brand-logo-img" />
         <div>
           <span class="brand-name">Fairybread<span class="brand-domain">.me</span></span>
-          <span class="brand-tag">BETA v0.9.1</span>
+          <span class="brand-tag dynamic-version-tag">BETA v0.9.1</span>
         </div>
       </div>
 
       <nav class="main-nav" id="mainNav">
         <button class="nav-btn active" data-tab="home" onclick="switchTab('home')">🏠 Home</button>
+        <button class="nav-btn" data-tab="guide" onclick="switchTab('guide')">📖 Help &amp; Guide</button>
         <button class="nav-btn" data-tab="news" onclick="switchTab('news')">📰 News</button>
-        <button class="nav-btn" data-tab="forums" onclick="switchTab('forums')">💬 Forums</button>
         <button class="nav-btn" data-tab="themes" onclick="switchTab('themes')">🎨 Themes &amp; Skins</button>
         <button class="nav-btn" data-tab="donors" onclick="switchTab('donors')">🏆 Donors &amp; Donate</button>
         <button class="nav-btn" data-tab="code" onclick="switchTab('code')">🔍 View Code</button>
         <button class="nav-btn" data-tab="about" onclick="switchTab('about')">👤 About Brett</button>
+        <a class="nav-btn forum-link-btn" href="forum.html">💬 Community Forums →</a>
       </nav>
 
       <div class="header-actions">
-        <button class="btn-auth" id="authHeaderBtn" onclick="openAuthModal()">🔐 Sign In / Join</button>
-        <a class="btn-download-sm" href="https://github.com/bm069au/fairybread-web/releases/download/v0.9.1-beta/Fairybread_Beta_v0.9.1_Installer.zip">⬇ Download Beta</a>
+        <a class="btn-download-sm dynamic-download-btn" href="https://github.com/bm069au/fairybread/releases/latest/download/Fairybread_v0.9.1_beta_Win_x64_Setup.zip">⬇ Download Beta (Win_x64)</a>
       </div>
     </div>
   </header>
@@ -45,26 +46,33 @@
       <div class="hero-card">
         <div class="hero-left">
           <div class="pill-badge">✨ Proprietary Source-Available · Free up to 2 Seats · Zero Monthly Subscriptions</div>
-          <h1>Stop Paying 4 Rival AI Subscriptions.<br /><span class="gradient-text">Own Your Own 8-AI Council &amp; Memory.</span></h1>
+          <h1>Stop Paying Rival AI Subscriptions.<br /><span class="gradient-text">Own Your Own Multi-AI Council &amp; Memory.</span></h1>
           <p class="hero-lead">
-            <strong>Fairybread</strong> replaces dedicated corporate workspaces like ChatGPT Plus, Claude Pro, and Grok with one high-speed Windows desktop platform that <strong>you</strong> control. Connect your own API keys, pay only pennies for exact usage, and keep <strong>100% of your Shared Memory locally on your PC</strong>.
+            <strong>Fairybread</strong> replaces dedicated corporate workspaces like ChatGPT Plus, Claude Pro, and Grok with one high-speed Windows desktop platform that <strong>you</strong> control. Connect as many cloud or local AI providers as you want, pay only pennies for exact usage, and keep <strong>100% of your Shared Memory locally on your PC</strong>.
           </p>
           <div class="hero-cta-row">
-            <a class="btn-primary-lg" href="https://github.com/bm069au/fairybread-web/releases/download/v0.9.1-beta/Fairybread_Beta_v0.9.1_Installer.zip">
-              ⬇ Download Fairybread Beta v0.9.1 (Windows)
+            <a class="btn-primary-lg dynamic-download-btn" id="heroDownloadBtn" href="https://github.com/bm069au/fairybread/releases/latest/download/Fairybread_v0.9.1_beta_Win_x64_Setup.zip">
+              ⬇ Download Fairybread Beta v0.9.1 (Win_x64)
             </a>
             <button class="btn-secondary-lg" onclick="switchTab('donors')">❤️ Support the Creator (USD)</button>
-            <button class="btn-outline-lg" onclick="switchTab('themes')">🎨 Winamp-Style Skin Studio</button>
+            <a class="btn-outline-lg" href="forum.html">💬 Visit Community Forums →</a>
           </div>
           <div class="hero-meta">
             <span>✔ Windows 10 / 11 Desktop</span>
-            <span>✔ 8 Simultaneous Council AIs</span>
+            <span>✔ Unlimited AI Providers (Cloud &amp; Local)</span>
             <span>✔ Live Hands-Free Voice (<code>|||✨</code>)</span>
             <span>✔ 300-DPI Print &amp; Social Studio</span>
           </div>
         </div>
 
         <div class="hero-right">
+          <div class="fairy-hero-banner">
+            <img src="fairybread_icon.png" alt="Fairybread Emblem" class="hero-fairy-img" />
+            <div>
+              <strong>🧚 Official Fairybread Desktop Workspace</strong>
+              <div class="muted-sub">Multi-AI Deliberation · Local SQLite Memory · Experimental Mode Lab</div>
+            </div>
+          </div>
           <div class="app-mockup">
             <div class="mockup-titlebar">
               <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -78,11 +86,11 @@
               </div>
               <div class="mockup-chat-bubble ai-deepseek">
                 <strong>❖ DeepSeek R1</strong> · <span>Peer Review</span>
-                <p>Verified against live source code. Added a counter-metric for attention-gate drift and saved to Shared Memory.</p>
+                <p>Verified against live source code. Added an Audit Lottery for Shared Experimental Memory.</p>
               </div>
               <div class="mockup-chat-bubble ai-synth">
                 <strong>👑 Council Synthesis</strong> · <span>🔊 Speak</span>
-                <p>All 8 agents reached consensus in 1.8s. High-res 300-DPI asset rendered and indexed locally.</p>
+                <p>All active Council agents reached consensus in 1.8s. High-res 300-DPI asset rendered and indexed locally.</p>
               </div>
               <div class="mockup-bar">
                 <span>Agents: ◆ Gemini · ● OpenAI · ❖ DeepSeek · ⚡ Groq · ✦ Qwen · ◎ Cohere · ▲ Mistral · ◈ Cerebras</span>
@@ -99,7 +107,7 @@
         <div class="feature-card">
           <div class="feat-icon">🏛️</div>
           <h3>100% Local Shared Memory + Living Summary</h3>
-          <p>Every conversation automatically indexes into a local SQLite FTS5 + <code>zlib</code> database on your drive, plus a living, directly editable <strong>Memory Summary</strong> shared across all 8 AIs. Switch providers anytime without losing your history.</p>
+          <p>Every conversation automatically indexes into a local SQLite FTS5 + <code>zlib</code> database on your drive, plus a living, directly editable <strong>Memory Summary</strong> shared across all connected Council AIs. Switch or add providers anytime without losing your history.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">🎙️</div>
@@ -114,7 +122,7 @@
         <div class="feature-card">
           <div class="feat-icon">🧪</div>
           <h3>Autonomous Experimental Mode Lab</h3>
-          <p>Flip the <strong>Experimental</strong> switch to give your AI Council their own Shared Experimental Memory, customizable ethics charter, and optional read-only access to Fairybread's own source code (<code>{} Code</code>) to propose upgrades via Agent Mail.</p>
+          <p>Launch <strong>Experimental Mode</strong> from the <strong>Mode</strong> menu to give your AI Council their own Shared Experimental Memory, customizable ethics charter, and Agent Mail. <em>(Note: Live code self-modification is disabled in the Public Edition to prevent unverified forks and keep releases consistent—share proposed patches on the <a href="forum.html">Forum</a> or email bm069au@gmail.com.)</em></p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">📧</div>
@@ -127,6 +135,109 @@
           <p>Connect Google Antigravity, Claude Desktop, or ChatGPT Desktop to your local Fairybread Council in one click—and customize your entire UI with downloadable Winamp-style <code>.json</code> community skins.</p>
         </div>
       </div>
+
+      <!-- HOW IT WORKS (3 SIMPLE STEPS) -->
+      <h2 class="section-heading">⚡ How It Works — Up &amp; Running in 2 Minutes</h2>
+      <div class="feature-grid">
+        <div class="feature-card" style="border-color:#2b4c7e;">
+          <div class="pill-badge">STEP 1 · DOWNLOAD &amp; INSTALL</div>
+          <h3>1-Click Windows Setup</h3>
+          <p>Download the Beta installer ZIP above and run <code>Install_Fairybread_Beta.bat</code>. It installs cleanly on Windows 10/11 and places a Fairybread shortcut right on your Desktop—zero bloatware and zero monthly subscriptions.</p>
+        </div>
+        <div class="feature-card" style="border-color:#22c55e;">
+          <div class="pill-badge" style="color:#22c55e; border-color:#22c55e; background:#11281b;">STEP 2 · ATTACH YOUR OWN API KEYS</div>
+          <h3>Guided Setup Sends You to the Exact Sites</h3>
+          <p>Open <strong><code>Settings → AI Providers</code></strong>, pick the AIs you want to connect (Gemini, OpenAI, DeepSeek, Groq, Claude, Qwen, Mistral, Cohere, Cerebras, or free local Ollama), and click the built-in <strong><code>🔑 Get API Key ↗</code></strong> button—the app opens the exact provider key page for you and encrypts your keys locally via Windows DPAPI.</p>
+        </div>
+        <div class="feature-card" style="border-color:#a855f7;">
+          <div class="pill-badge" style="color:#c084fc; border-color:#a855f7; background:#231536;">STEP 3 · PAY PENNIES, NOT $80/MONTH</div>
+          <h3>A Fraction of Normal Subscription Costs</h3>
+          <p>Instead of paying $20–$30/month per AI company whether you use it or not, paying directly for API tokens typically costs a tiny fraction of a single subscription—while giving you <strong>unlimited connected AIs</strong> debating together and sharing <strong>100% local memory</strong> on your own PC.</p>
+        </div>
+      </div>
+
+      <!-- UPCOMING EXPERIMENT PACKS, THEMES & FAN ART -->
+      <h2 class="section-heading">🧪 Experiment Packs, Custom Themes &amp; Community Hub</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feat-icon">🏙️</div>
+          <h3>Experiment Packs (Virtual AI Towns &amp; Self-Improvement)</h3>
+          <p>Experimental Mode isn't just a chat room—we are building plug-and-play <strong>Experiment Packs</strong> so you can run <strong>Live Virtual AI Towns</strong>, <strong>Recursive Self-Improvement Labs</strong> (already running on our dev machines!), and multi-agent behavioral simulations at home.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">💬</div>
+          <h3>Community Forums — Requests, Ideas &amp; Experiments</h3>
+          <p>Have a feature request, a new Experiment Pack idea, or an interesting multi-agent log to share? Head over to our <a href="forum.html" style="color:var(--accent-blue); font-weight:700;">Community Forums</a>—the best place to lodge requests, swap prompts, and talk directly with Brett.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🖼️</div>
+          <h3>Winamp-Style Themes &amp; Community Fan Art</h3>
+          <p>Create and download custom <code>.json</code> skins in the <a href="#" onclick="switchTab('themes'); return false;" style="color:var(--accent-blue); font-weight:700;">Themes &amp; Skins Studio</a>, or share your 300-DPI artwork and Fairybread fan art in the Forums!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: HELP & USER GUIDE ================= -->
+    <section id="tab-guide" class="tab-section">
+      <div class="section-header-row">
+        <div>
+          <h2>📖 Fairybread User Guide &amp; Operating Instructions</h2>
+          <p class="muted-sub">This is the complete operating manual—also built directly into the desktop app (press <strong><code>F1</code></strong> or click <strong><code>Help → 📖 User Guide</code></strong> anytime).</p>
+        </div>
+        <a class="btn-primary dynamic-download-btn" href="https://github.com/bm069au/fairybread/releases/latest/download/Fairybread_v0.9.1_beta_Win_x64_Setup.zip">⬇ Download Fairybread Beta</a>
+      </div>
+
+      <div class="news-list">
+        <article class="news-card">
+          <h3>1. Quick Start: Connecting Your API Keys in 60 Seconds</h3>
+          <p style="color:var(--text-secondary);">
+            1. Launch Fairybread and click <strong><code>⚙ Settings &amp; AIs</code></strong> (bottom-left) or <strong><code>Settings → Fairybread Settings…</code></strong>.<br />
+            2. Select any provider in the <strong>AI Providers</strong> tab (e.g., <em>Gemini</em>, <em>OpenAI</em>, <em>DeepSeek</em>, <em>Groq</em>, <em>Qwen</em>, <em>Cohere</em>, <em>Mistral</em>, <em>Cerebras</em>, or <em>Ollama</em>).<br />
+            3. Need an API key? Click the built-in <strong><code>🔑 Get API Key ↗</code></strong> button to open that provider's exact API key page in your browser.<br />
+            4. Paste your key, tick <strong>Enable this AI provider</strong>, and click <strong><code>↻ Fetch Live Models</code></strong> to load the newest models automatically. Your key is encrypted locally on your PC using Windows DPAPI.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <h3>2. Toolbar Controls, Council Deliberation &amp; Live Voice Mode</h3>
+          <p style="color:var(--text-secondary);">
+            • <strong><code>Choose AIs ▾</code>:</strong> Toggle which AI providers are active or pick a preset Squad.<br />
+            • <strong><code>Council</code> (Purple when ON):</strong> Runs 2-Round Peer Deliberation (agents answer in Round 1, critique and cross-examine each other in Round 2, and synthesize one best answer). Turn OFF for fast 1-round synthesis.<br />
+            • <strong><code>Tangent</code>:</strong> Ask a quick side question without including prior conversation history.<br />
+            • <strong><code>{} Code</code>:</strong> Grants read-only visibility into Fairybread's own source code.<br />
+            • <strong><code>🎤</code> (Dictate) &amp; <code>|||✨</code> (Hands-Free Live Voice Mode):</strong> Click <code>🎤</code> to dictate speech into the text box, or click <code>|||✨</code> for continuous hands-free voice chat with a live soundwave volume meter (<code>🎙 ▂▅▇█▄▂</code>) and spoken responses!<br />
+            • <strong><code>Memory</code> (Top-Right):</strong> Open your 100% local SQLite FTS5 Shared Memory and click <strong><code>📝 Memory Summary (View &amp; Edit)…</code></strong> to view or edit what all connected AIs remember about you and your projects.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <h3>3. High-Resolution Image, Banner &amp; 300-DPI Print Studio</h3>
+          <p style="color:var(--text-secondary);">
+            • <strong>Default 1-Pass Drawing Mode:</strong> Just ask in plain English: <em>"Draw a photorealistic ginger cat on a sunlit windowsill"</em> or <em>"Create a YouTube banner for a gaming channel"</em>.<br />
+            • <strong>Council-Assisted Prompt Brainstorming:</strong> Ask <em>"All agents work on the prompt and then only one of you execute the drawing: ..."</em> so all active AIs collaborate on the visual prompt before rendering.<br />
+            • <strong>Built-In Platform &amp; Print Presets:</strong> Automatically sizes and stamps 300-DPI metadata for <strong>YouTube banners</strong> (<code>2560×1440</code>), <strong>YouTube thumbnails</strong> (<code>1280×720</code>), <strong>Facebook covers</strong> (<code>1920×1080</code>), <strong>4K wallpapers</strong> (<code>3840×2160</code>), <strong>Phone stories</strong> (<code>1080×1920</code>), <strong>8×10 in prints</strong> (<code>2400×3000 @ 300 DPI</code>), and <strong>A4 prints</strong> (<code>2480×3508 @ 300 DPI</code>).
+          </p>
+        </article>
+
+        <article class="news-card">
+          <h3>4. Autonomous Experimental Mode Lab &amp; Agent Mail</h3>
+          <p style="color:var(--text-secondary);">
+            • Open the <strong><code>Mode → 🧪 Experimental Mode</code></strong> menu to launch the autonomous multi-agent lab (the top-right badge shows <code>OFF</code>, <code>🔴 RUNNING</code>, or <code>⏸ STOPPED</code>).<br />
+            • In the Public Edition, agents converse in <strong><code>💬 Free Talk</code></strong>, store durable notes in <strong>Shared Experimental Memory</strong>, and message you via <strong>Agent Mail</strong>.<br />
+            • <strong>Why Live Code Self-Modification Is Disabled in Public Builds:</strong> Self-patching (<code>/autopatch</code> &amp; <code>[IDLE_PATCH]</code>) is hardwired OFF in non-Developer builds so public installations remain verified, consistent, and cannot bypass licensing or safety restrictions. Have an improvement idea or proposed patch? Post it in the <a href="forum.html">Fairybread Community Forum</a> or email <code>bm069au@gmail.com</code> for review.<br />
+            • Customize the session timer, token/USD spend caps, startup prompt, and ethics charter in <strong><code>Settings → Experimental Mode</code></strong>.
+          </p>
+        </article>
+
+        <article class="news-card">
+          <h3>5. Custom Themes, System Tray &amp; AES-256 Encrypted Backups</h3>
+          <p style="color:var(--text-secondary);">
+            • <strong>Install Custom Skins:</strong> Download any <code>.json</code> skin from the <a href="#" onclick="switchTab('themes'); return false;" style="color:var(--accent-blue);">Themes &amp; Skins</a> tab and click <strong><code>View → 🎨 Theme → 📥 Import Custom Theme (.json)…</code></strong>.<br />
+            • <strong>Close to System Tray:</strong> Clicking the window <code>✕</code> button minimizes Fairybread to the Windows System Tray so background tasks keep running safely (right-click the tray icon to Expand or Exit).<br />
+            • <strong>Password-Locked Portable Backups:</strong> In <strong><code>Settings → Backup &amp; Restore</code></strong>, export a single AES-256-GCM encrypted <code>.zip</code> backup containing all your memories, sessions, themes, and API keys to move to a new PC in one click.
+          </p>
+        </article>
+      </div>
     </section>
 
     <!-- ================= TAB: NEWS & DEVLOG ================= -->
@@ -136,48 +247,9 @@
           <h2>📰 Fairybread News, Changelogs &amp; Experimental Council Devlog</h2>
           <p class="muted-sub">Official release announcements, upcoming Experimental Mode add-ons, and breakthroughs from the autonomous AI Council.</p>
         </div>
-        <button class="btn-secondary" onclick="openNewNewsModal()">+ Post News Update (Admin)</button>
+        <a class="btn-secondary" href="forum.html">💬 Discuss in the Forums →</a>
       </div>
       <div id="newsFeedContainer" class="news-list"></div>
-    </section>
-
-    <!-- ================= TAB: COMMUNITY FORUMS ================= -->
-    <section id="tab-forums" class="tab-section">
-      <div class="section-header-row">
-        <div>
-          <h2>💬 Fairybread Community Forums</h2>
-          <p class="muted-sub">Discuss multi-AI workflows, share Experimental Mode prompts &amp; findings, post custom themes, and request features. Donors receive automatic Supporter Badges!</p>
-        </div>
-        <div class="forum-top-actions">
-          <button class="btn-outline" onclick="openSupabaseConfigModal()" title="Connect free Supabase Postgres + Auth for cloud multi-user sync">⚙ Cloud DB Status</button>
-          <button class="btn-primary" onclick="openNewThreadModal()">+ New Forum Thread</button>
-        </div>
-      </div>
-
-      <div class="forum-toolbar">
-        <div class="forum-categories" id="forumCategoryPills">
-          <button class="cat-pill active" data-cat="all" onclick="filterForumCategory('all')">All Topics</button>
-          <button class="cat-pill" data-cat="Announcements" onclick="filterForumCategory('Announcements')">📢 Announcements</button>
-          <button class="cat-pill" data-cat="General Discussion" onclick="filterForumCategory('General Discussion')">💬 General</button>
-          <button class="cat-pill" data-cat="Experimental Mode Lab" onclick="filterForumCategory('Experimental Mode Lab')">🧪 Experimental Lab</button>
-          <button class="cat-pill" data-cat="Custom Themes & Skins" onclick="filterForumCategory('Custom Themes & Skins')">🎨 Themes &amp; Skins</button>
-          <button class="cat-pill" data-cat="Bug Reports & Ideas" onclick="filterForumCategory('Bug Reports & Ideas')">🐛 Bugs &amp; Ideas</button>
-          <button class="cat-pill" data-cat="Artwork & Prompts" onclick="filterForumCategory('Artwork & Prompts')">🖼 Artwork</button>
-        </div>
-        <input type="search" id="forumSearchInput" class="search-input" placeholder="Search forum threads…" oninput="renderForumThreads()" />
-      </div>
-
-      <div class="forum-layout">
-        <div class="forum-thread-list" id="forumThreadList"></div>
-        <div class="forum-thread-detail" id="forumThreadDetail">
-          <div class="empty-detail">Select any thread on the left to read and reply.</div>
-        </div>
-      </div>
-
-      <div class="github-helper-banner">
-        <span>👩‍💻 <strong>Want to help contribute fixes or test builds on GitHub?</strong></span>
-        <a href="https://github.com/bm069au/fairybread" target="_blank" rel="noopener" class="btn-outline">Open GitHub Repository ↗</a>
-      </div>
     </section>
 
     <!-- ================= TAB: WINAMP-STYLE THEME STUDIO & GALLERY ================= -->
@@ -185,10 +257,10 @@
       <div class="section-header-row">
         <div>
           <h2>🎨 Winamp-Style Theme Studio &amp; Community Skin Gallery</h2>
-          <p class="muted-sub">Design your own Fairybread desktop skin with live preview, download safe <code>.json</code> theme files (zero executable code), or publish your skin to the community gallery!</p>
+          <p class="muted-sub">Design your own Fairybread desktop skin with live preview, download safe <code>.json</code> theme files (zero executable code), or share your skin in the Forums!</p>
         </div>
         <div class="how-to-install-pill">
-          💡 <strong>How to install in Fairybread:</strong> Click <code>View → 🎨 Theme → 📂 Open Custom Themes Folder…</code> and drop the downloaded <code>.json</code> file inside!
+          💡 <strong>How to install in Fairybread:</strong> Click <code>View → 🎨 Theme → 📥 Import Custom Theme (.json)…</code> and select the downloaded file!
         </div>
       </div>
 
@@ -224,7 +296,7 @@
           </label>
           <div class="studio-btn-row">
             <button class="btn-primary" onclick="downloadCurrentSkinJson()">⬇ Download .json Theme</button>
-            <button class="btn-secondary" onclick="publishCurrentSkinToGallery()">🚀 Publish Skin to Gallery</button>
+            <button class="btn-secondary" onclick="publishCurrentSkinToGallery()">🚀 Add to Local Gallery</button>
             <button class="btn-outline" onclick="copyCurrentSkinJson()">📋 Copy JSON</button>
           </div>
         </div>
@@ -264,7 +336,7 @@
         </div>
       </div>
 
-      <h3 class="section-subheading">🌟 Community &amp; Classic Skin Gallery (Click "Load in Studio" or "Download .json")</h3>
+      <h3 class="section-subheading">🌟 Community &amp; Classic Skin Gallery (Click "Preview in Studio" or "Download .json")</h3>
       <div id="skinGalleryGrid" class="skin-gallery-grid"></div>
     </section>
 
@@ -335,7 +407,6 @@
           <h2>🏆 Donor Hall of Fame — Our Supporters</h2>
           <p class="muted-sub">Thank you to everyone helping keep Fairybread independent and free from corporate lock-in!</p>
         </div>
-        <button class="btn-outline" onclick="openAddDonorModal()">+ Add Donor to Wall (Admin)</button>
       </div>
       <div id="donorWallGrid" class="donor-wall-grid"></div>
     </section>
@@ -351,7 +422,7 @@
             <strong>Public forking, redistribution, rebranding, or commercial use (&gt; 2 seats) without a written license is strictly prohibited.</strong>
           </p>
         </div>
-        <a href="https://github.com/bm069au/fairybread" target="_blank" rel="noopener" class="btn-outline">Contribute on GitHub ↗</a>
+        <a href="https://github.com/bm069au/fairybread" target="_blank" rel="noopener" class="btn-outline">View Official GitHub Repo ↗</a>
       </div>
 
       <div class="code-explorer-layout">
@@ -371,21 +442,13 @@
       <div class="bio-card">
         <div class="bio-photo-col">
           <div class="portrait-frame" id="brettPortraitFrame">
-            <img id="brettPortraitImg" src="" alt="Brett Martin Moore" style="display:none;" />
-            <div id="brettPortraitPlaceholder" class="portrait-placeholder">
-              <span class="portrait-emoji">🧙‍♂️</span>
-              <p><strong>Brett Martin Moore</strong><br />Creator &amp; Systems Architect</p>
-              <label class="btn-outline-sm">
-                📷 Preview / Load Studio Portrait
-                <input type="file" accept="image/*" style="display:none;" onchange="previewBioPortrait(event)" />
-              </label>
-            </div>
+            <img id="brettPortraitImg" src="fairybread_icon.png" alt="Brett Martin Moore — Fairybread Emblem" />
           </div>
           <div class="bio-quick-facts">
+            <div><strong>Creator:</strong> Brett Martin Moore</div>
             <div><strong>Location:</strong> Australia</div>
-            <div><strong>Handle:</strong> <code>bm069au</code></div>
+            <div><strong>GitHub:</strong> <a href="https://github.com/bm069au" target="_blank" rel="noopener">@bm069au</a></div>
             <div><strong>Contact:</strong> <a href="mailto:bm069au@gmail.com">bm069au@gmail.com</a></div>
-            <div><strong>Thinking Style:</strong> Systems, Patterns &amp; Pure Logic</div>
           </div>
         </div>
 
@@ -402,7 +465,7 @@
             So I engineered <strong>Fairybread</strong>:
           </p>
           <ul class="bio-list">
-            <li><strong>A True Multi-AI Council:</strong> Up to 8 frontier models deliberating, peer-reviewing, and synthesizing answers together in parallel.</li>
+            <li><strong>A True Multi-AI Council (No Hard Limits):</strong> Connect as many frontier cloud or local AI models as you want—deliberating, peer-reviewing, and synthesizing answers together in parallel.</li>
             <li><strong>100% Local Shared Memory:</strong> Your conversations and living Memory Summary stay on your own hard drive in a fast SQLite FTS5 index—never locked inside one vendor's cloud.</li>
             <li><strong>Autonomous Experimental Mode:</strong> A sandboxed multi-agent lab where AIs can collaborate on their own, share notes in Experimental Memory, and even inspect Fairybread's own code to suggest upgrades.</li>
           </ul>
@@ -411,7 +474,7 @@
           </p>
           <div class="hero-cta-row" style="margin-top:18px;">
             <button class="btn-primary" onclick="switchTab('donors')">❤️ Support Brett's Work</button>
-            <button class="btn-outline" onclick="switchTab('forums')">💬 Say Hello in the Forums</button>
+            <a class="btn-outline" href="forum.html">💬 Join the Community Forums →</a>
           </div>
         </div>
       </div>
@@ -425,132 +488,14 @@
         <span class="muted-sub">Copyright © 2026 Brett Martin Moore. All Rights Reserved. Proprietary Source-Available License (Free up to 2 seats; Corporate License required for &gt; 2 seats).</span>
       </div>
       <div class="footer-links">
-        <a href="https://github.com/bm069au/fairybread-web/releases" target="_blank" rel="noopener">Releases</a>
+        <a href="forum.html">Community Forums</a>
+        <a href="https://github.com/bm069au/fairybread/releases" target="_blank" rel="noopener">Releases</a>
         <a href="https://github.com/sponsors/bm069au" target="_blank" rel="noopener">Donate (USD)</a>
         <a href="mailto:bm069au@gmail.com">Corporate Licensing</a>
       </div>
     </div>
   </footer>
 
-  <!-- ================= MODALS ================= -->
-  <div id="modalBackdrop" class="modal-backdrop" style="display:none;" onclick="closeAllModals(event)">
-    <!-- Auth Modal -->
-    <div id="authModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
-      <h3>🔐 Sign In or Join Fairybread.me</h3>
-      <p class="muted-sub">Sign in to post in the Community Forums, publish custom Winamp-style skins, and display your Donor Badge.</p>
-      <label>Display Name / Username
-        <input type="text" id="authUsername" placeholder="e.g. Brett_Creator or AI_Explorer" />
-      </label>
-      <label>Email Address
-        <input type="email" id="authEmail" placeholder="you@example.com" />
-      </label>
-      <label>Password
-        <input type="password" id="authPassword" placeholder="••••••••" />
-      </label>
-      <label>Supporter / Donor Tier Badge (Verified against Donor Wall)
-        <select id="authBadgeSelect">
-          <option value="🧁 Member">🧁 Community Member</option>
-          <option value="🌱 $5 Supporter">🌱 $5 Supporter</option>
-          <option value="📬 $10 Newsletter">📬 $10 Newsletter Supporter</option>
-          <option value="🌟 $25 Early Previewer">🌟 $25 Early Previewer</option>
-          <option value="💎 $50 Beta Patron">💎 $50 Beta Patron</option>
-          <option value="👑 Creator (Brett)">👑 Creator (Brett)</option>
-        </select>
-      </label>
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="handleUserSignIn()">Sign In / Create Account</button>
-        <button class="btn-outline" onclick="handleSignOut()" id="signOutBtn" style="display:none;">Sign Out</button>
-        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
-      </div>
-    </div>
-
-    <!-- New Thread Modal -->
-    <div id="newThreadModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
-      <h3>💬 Start a New Forum Thread</h3>
-      <label>Category
-        <select id="threadCatInput">
-          <option value="General Discussion">💬 General Discussion</option>
-          <option value="Experimental Mode Lab">🧪 Experimental Mode Lab</option>
-          <option value="Custom Themes & Skins">🎨 Custom Themes &amp; Skins</option>
-          <option value="Bug Reports & Ideas">🐛 Bug Reports &amp; Ideas</option>
-          <option value="Artwork & Prompts">🖼 Artwork &amp; Prompts</option>
-          <option value="Announcements">📢 Announcements</option>
-        </select>
-      </label>
-      <label>Thread Title
-        <input type="text" id="threadTitleInput" placeholder="What would you like to discuss?" />
-      </label>
-      <label>Message (Markdown &amp; Theme JSON supported)
-        <textarea id="threadBodyInput" rows="6" placeholder="Write your post here…"></textarea>
-      </label>
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="submitNewForumThread()">Post Thread</button>
-        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
-      </div>
-    </div>
-
-    <!-- New News Modal -->
-    <div id="newNewsModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
-      <h3>📰 Post Official News / Devlog Update</h3>
-      <label>Headline
-        <input type="text" id="newsTitleInput" placeholder="e.g. Fairybread v0.9.2 Released!" />
-      </label>
-      <label>Category Tag
-        <input type="text" id="newsTagInput" value="Release Update" />
-      </label>
-      <label>Article Content
-        <textarea id="newsBodyInput" rows="6" placeholder="Write the news announcement…"></textarea>
-      </label>
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="submitNewNewsPost()">Publish News</button>
-        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Add Donor Modal -->
-    <div id="addDonorModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
-      <h3>🏆 Add Supporter to Donor Hall of Fame</h3>
-      <label>Supporter Name / Handle
-        <input type="text" id="donorNameInput" placeholder="e.g. Alex K." />
-      </label>
-      <label>Donation Tier
-        <select id="donorTierInput">
-          <option value="$350 VIP Patron">👑 $350 VIP &amp; Custom Code Patron</option>
-          <option value="$50 Beta Group">💎 $50 Beta Test Group Patron</option>
-          <option value="$25 Early Previewer">🌟 $25 Release Notes &amp; Early Previewer</option>
-          <option value="$10 Newsletter">📬 $10 Newsletter Supporter</option>
-          <option value="$5 Supporter">🌱 $5 Supporter</option>
-        </select>
-      </label>
-      <label>Short Note / Message
-        <input type="text" id="donorNoteInput" placeholder="e.g. Love the 8-AI Council & local memory!" />
-      </label>
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="submitNewDonor()">Add to Donor Wall</button>
-        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Supabase Cloud DB Config Modal -->
-    <div id="supabaseModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
-      <h3>⚙ Cloud Database Connector (Supabase Free Tier)</h3>
-      <p class="muted-sub">
-        Out of the box, <code>Fairybread.me</code> runs in instant hybrid mode. To enable live multi-user cloud accounts and global forum sync (50,000 free users / $0/month), paste your free <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a> Project URL and Anon Key below:
-      </p>
-      <label>Supabase Project URL
-        <input type="url" id="sbUrlInput" placeholder="https://xyzcompany.supabase.co" />
-      </label>
-      <label>Supabase Public Anon Key
-        <input type="text" id="sbKeyInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." />
-      </label>
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="saveSupabaseConfig()">Save Cloud DB Config</button>
-        <button class="btn-outline" onclick="closeAllModals()">Close</button>
-      </div>
-    </div>
-  </div>
-
   <script src="app.js"></script>
 </body>
 </html>
-

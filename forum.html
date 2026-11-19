@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fairybread.me Community Forums — Login, Discussions &amp; Supporter Hub</title>
+  <link rel="icon" type="image/png" href="fairybread_icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sprinkle-bar"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" style="text-decoration:none;">
+        <img src="fairybread_icon.png" alt="Fairybread Logo" class="brand-logo-img" />
+        <div>
+          <span class="brand-name">Fairybread<span class="brand-domain">.me</span></span>
+          <span class="brand-tag">FORUMS</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a class="nav-btn" href="index.html" style="text-decoration:none;">← Back to Main Site</a>
+        <span class="nav-btn active">💬 Community Forums</span>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-outline" id="modQueueBtn" style="display:none; padding:6px 11px; font-size:12.5px;" onclick="openModQueueModal()">🛡️ Review Queue (0)</button>
+        <button class="btn-auth" id="authHeaderBtn" onclick="openAuthModal()">🔐 Sign In / Register</button>
+        <a class="btn-download-sm" href="https://github.com/bm069au/fairybread/releases/download/v0.9.1-beta/Fairybread_v0.9.1_beta_Win_x64_Setup.zip">⬇ Download Beta (Win_x64)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="tab-section active">
+      <!-- MANDATORY SIGN-IN / REGISTRATION GATE (Shown when user is not logged in) -->
+      <div id="forumAuthGate" style="max-width:560px; margin:36px auto; background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:28px; text-align:center; box-shadow:0 12px 32px rgba(0,0,0,0.45);">
+        <div style="font-size:40px; margin-bottom:8px;">🔒</div>
+        <h2 style="margin:0 0 8px; font-size:22px;">Members-Only Community Forum</h2>
+        <p class="muted-sub" style="margin-bottom:18px; line-height:1.55;">
+          To protect community discussions, share screen captures, and prevent impersonation, you must <strong>register and sign in</strong> before viewing or posting in the Fairybread Community Forums.
+        </p>
+        <button class="btn-primary" style="padding:11px 26px; font-size:14.5px;" onclick="openAuthModal()">🔐 Register / Sign In to Enter Forum</button>
+      </div>
+
+      <!-- UNLOCKED FORUM WORKSPACE (Visible ONLY after user registers & logs in) -->
+      <div id="forumUnlockedWorkspace" style="display:none;">
+        <!-- Clean Single-Row Forum Control Bar -->
+        <div class="forum-unified-bar">
+          <div class="forum-bar-left">
+            <h2 style="margin:0; font-size:20px;">💬 Community Forums</h2>
+            <select id="forumCategorySelect" class="forum-cat-select" onchange="filterForumCategory(this.value)">
+              <option value="all">📂 All Topics</option>
+              <option value="Announcements">📢 Announcements</option>
+              <option value="General Discussion">💬 General Discussion</option>
+              <option value="Experimental Mode Lab">🧪 Experimental Mode Lab</option>
+              <option value="Custom Themes & Skins">🎨 Custom Themes &amp; Skins</option>
+              <option value="Bug Reports & Ideas">🐛 Bug Reports &amp; Ideas</option>
+              <option value="Artwork & Prompts">🖼 Artwork &amp; Prompts</option>
+            </select>
+          </div>
+
+          <div class="forum-bar-right">
+            <input type="search" id="forumSearchInput" class="search-input" placeholder="Search threads…" oninput="renderForumThreads()" />
+            <button class="btn-primary" onclick="openNewThreadModal()">+ New Thread</button>
+          </div>
+        </div>
+
+        <div class="forum-layout">
+          <div class="forum-thread-list" id="forumThreadList"></div>
+          <div class="forum-thread-detail" id="forumThreadDetail">
+            <div class="empty-detail">Select any thread on the left to read and reply.</div>
+          </div>
+        </div>
+
+        <div class="github-helper-banner">
+          <span>👩‍💻 <strong>Want to inspect the code or contribute improvements on GitHub?</strong></span>
+          <a href="https://github.com/bm069au/fairybread" target="_blank" rel="noopener" class="btn-outline">Open Official GitHub Repository ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>🧚 Fairybread.me Forums</strong> — Created by <strong>Brett Martin Moore</strong> (<code>bm069au@gmail.com</code>).
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Main Website</a>
+        <a href="https://github.com/sponsors/bm069au" target="_blank" rel="noopener">Donate (USD)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals (Forum Page Only) -->
+  <div id="modalBackdrop" class="modal-backdrop" style="display:none;" onclick="closeAllModals(event)">
+    <!-- Auth / Registration Modal -->
+    <div id="authModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
+      <h3>🔐 Forum Sign In / Registration</h3>
+      <p class="muted-sub">
+        All accounts default to <strong>👤 User</strong>. If you request a Donor or Moderator badge below, your profile remains <strong>👤 User</strong> until approved by Brett or a Moderator.
+      </p>
+      <label>Username / Handle
+        <input type="text" id="authUsername" placeholder="e.g. Alex_AU" />
+      </label>
+      <label>Email Address
+        <input type="email" id="authEmail" placeholder="you@example.com" />
+      </label>
+      <label>Password
+        <input type="password" id="authPassword" placeholder="••••••••" />
+      </label>
+      <label>Request Donor / Moderator Badge (Optional — Placed in Moderator Review Queue)
+        <select id="authBadgeRequestSelect">
+          <option value="">None (Standard 👤 User)</option>
+          <option value="🌱 $5 Supporter">Request: 🌱 $5 Supporter Badge (Requires Verification)</option>
+          <option value="📬 $10 Newsletter">Request: 📬 $10 Newsletter Badge (Requires Verification)</option>
+          <option value="🌟 $25 Early Previewer">Request: 🌟 $25 Early Previewer Badge (Requires Verification)</option>
+          <option value="💎 $50 Beta Patron">Request: 💎 $50 Beta Patron Badge (Requires Verification)</option>
+          <option value="👑 $350 VIP Patron">Request: 👑 $350 VIP Patron Badge (Requires Verification)</option>
+          <option value="🛡️ Moderator">Request: 🛡️ Forum Moderator Role (Requires Owner Approval)</option>
+        </select>
+      </label>
+      <details style="font-size:12px; color:var(--text-muted); margin-top:4px;">
+        <summary style="cursor:pointer;">🔑 Owner / Moderator Passkey (Brett &amp; Approved Mods Only)</summary>
+        <input type="password" id="authOwnerKey" placeholder="Enter Owner/Moderator Passkey…" style="width:100%; margin-top:6px;" />
+      </details>
+      <div id="authErrorMsg" style="color:#f87171; font-size:12.5px; display:none;"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="handleUserSignIn()">Sign In / Register</button>
+        <button class="btn-outline" onclick="handleSignOut()" id="signOutBtn" style="display:none;">Sign Out</button>
+        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- New Thread Modal -->
+    <div id="newThreadModal" class="modal-card" style="display:none;" onclick="event.stopPropagation()">
+      <h3>💬 Start a New Forum Thread</h3>
+      <label>Category
+        <select id="threadCatInput">
+          <option value="General Discussion">💬 General Discussion</option>
+          <option value="Experimental Mode Lab">🧪 Experimental Mode Lab</option>
+          <option value="Custom Themes & Skins">🎨 Custom Themes &amp; Skins</option>
+          <option value="Bug Reports & Ideas">🐛 Bug Reports &amp; Ideas</option>
+          <option value="Artwork & Prompts">🖼 Artwork &amp; Prompts</option>
+          <option value="Announcements">📢 Announcements</option>
+        </select>
+      </label>
+      <label>Thread Title
+        <input type="text" id="threadTitleInput" maxlength="120" placeholder="What would you like to discuss? (Up to 120 chars)" oninput="updateThreadCharCounters()" />
+        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-top:-4px;">
+          <span>A clear summary of your topic</span>
+          <span id="threadTitleCharCount">0 / 120 chars</span>
+        </div>
+      </label>
+      <label>Message (Tip: Press <code>Ctrl+V</code> here to paste a screenshot directly!)
+        <textarea id="threadBodyInput" rows="6" maxlength="20000" placeholder="Write your post here… (Up to 20,000 chars, or press Ctrl+V to paste a screenshot)" oninput="updateThreadCharCounters()" onpaste="handleForumPasteImage(event, 'thread')"></textarea>
+        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-top:-4px;">
+          <span>Detailed explanation, patch idea, or logs</span>
+          <span id="threadBodyCharCount">0 / 20,000 chars</span>
+        </div>
+      </label>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:4px;">
+        <label class="btn-outline" style="cursor:pointer; padding:6px 12px; font-size:12.5px; margin:0;">
+          📷 Attach Picture / Screen Capture…
+          <input type="file" id="threadImageInput" accept="image/*" style="display:none;" onchange="handleForumFileSelect(event, 'thread')" />
+        </label>
+        <span class="muted-sub" style="font-size:11.5px;">Auto-optimized for fast forum loading</span>
+      </div>
+      <div id="threadImgPreviewWrap" style="display:none; margin-top:8px; background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:8px; align-items:center; justify-content:space-between; gap:10px;">
+        <img id="threadImgPreview" src="" alt="Preview" style="max-height:80px; border-radius:6px; border:1px solid var(--border);" />
+        <button class="btn-outline" style="padding:4px 10px; font-size:12px; color:#f87171;" onclick="clearForumImage('thread')">✕ Remove Picture</button>
+      </div>
+      <div id="threadErrorMsg" style="display:none; color:#f87171; background:#291114; border:1px solid #7f1d1d; border-radius:6px; padding:8px 12px; margin-top:8px; font-size:12.5px; line-height:1.4;"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="submitNewForumThread()">Post Thread</button>
+        <button class="btn-outline" onclick="closeAllModals()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Full-Screen Image Lightbox Modal -->
+    <div id="forumImgLightbox" class="modal-card" style="display:none; max-width:92vw; width:auto; padding:12px; text-align:center;" onclick="event.stopPropagation()">
+      <img id="forumImgLightboxTarget" src="" alt="Full Screen Preview" style="max-width:88vw; max-height:80vh; border-radius:8px; border:1px solid var(--border);" />
+      <div class="modal-actions" style="justify-content:center; margin-top:10px;">
+        <button class="btn-outline" onclick="closeAllModals()">Close Preview</button>
+      </div>
+    </div>
+
+    <!-- Owner / Moderator Badge Review Queue Modal -->
+    <div id="modQueueModal" class="modal-card" style="display:none; max-width:600px;" onclick="event.stopPropagation()">
+      <h3>🛡️ Owner &amp; Moderator Badge Review Queue</h3>
+      <p class="muted-sub">Users listed below are currently shown as <strong>👤 User</strong> until you Approve or Reject their requested Donor/Moderator badge:</p>
+      <div id="modQueueList" style="display:flex; flex-direction:column; gap:10px; max-height:360px; overflow-y:auto;"></div>
+      <div class="modal-actions">
+        <button class="btn-outline" onclick="closeAllModals()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

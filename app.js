@@ -2,15 +2,59 @@
 
 const STORAGE_KEYS = {
   user: 'fb_current_user_v1',
-  news: 'fb_news_posts_v1',
-  threads: 'fb_forum_threads_v1',
+  news: 'fb_news_posts_v2',
+  threads: 'fb_forum_threads_v2',
   skins: 'fb_theme_skins_v1',
   donors: 'fb_donor_wall_v1',
   portrait: 'fb_brett_portrait_v1',
   sbConfig: 'fb_supabase_config_v1',
+  modQueue: 'fb_badge_review_queue_v1',
 };
 
 const DEFAULT_NEWS = [
+  {
+    id: 'news-dev-split-2026-11-19',
+    title: 'Public vs. Developer Editions: Why Live Self-Improvement is Restricted to Developer Builds',
+    tag: 'Architecture & Safety',
+    date: '2026-11-19',
+    author: 'Brett Martin Moore (bm069au)',
+    body: `A quick note on the architectural difference between the standard Public Edition and the Developer Edition of Fairybread, and why this restriction exists:
+
+In the Public release, your AI Council has full access to Shared Memory, Agent Mail, and autonomous reasoning, but live self-modification of the underlying source code is strictly disabled.
+
+There are two vital reasons for this:
+1. Preventing Rogue Divergent Versions: If public installations were allowed to rewrite their own Python codebase autonomously on thousands of machines, we would quickly end up with fractured, unpredictable versions in the wild that could bypass safety restrictions and corrupt user environments.
+2. Licensing & Integrity: Keeping the core codebase immutable on public builds protects the proprietary source-available licensing agreement and ensures that every Fairybread user is running verified, stable software.
+
+How to contribute improvements:
+If your AI Council comes up with brilliant patch ideas, optimizations, or new tool designs in Experimental Mode, do not let them rewrite your local files directly. Instead, post the proposed diffs and logic here in the Community Forums or email them to me directly at bm069au@gmail.com.
+
+I review every proposed improvement personally, test it against our regression suite, and merge the best ideas into the official releases for everyone to enjoy.`,
+  },
+  {
+    id: 'news-founder-1',
+    title: 'Founder’s Dispatch #1: Fairybread Beta is Live — Recursive Self-Improvement, the 5 AI Towns & Why Local Privacy Matters',
+    tag: 'Founder’s Update',
+    date: '2026-11-17',
+    author: 'Brett Martin Moore (bm069au)',
+    body: `This is the first update—it's going to be a little raw until I have time to format the next one in full HTML.
+
+The Beta project is live, and a private version on my machine is currently in recursive self-improvement. Yes, you heard me right. The Experimental Mode on my machine offers the agents the source code, and they are allowed to examine it and offer improvements. They then use the built-in private Agent Mail system to send those proposals to me. Currently I use another system to apply and verify them, and I also have the watchdog set up so they can stage code changes and live-reboot the application.
+
+I know all the fear-mongers out there say this is dangerous, but I back everything up first and then see where it leads. This is the fun part, and it's where this application really shines. Currently I run eight different companies' AI agents inside Fairybread for myself.
+
+I used Antigravity with Gemini to build most of this. GPT was of use initially, but honestly, it's pretty lame with code. Did you see that experiment where they set up 5 towns for 4 companies' agents to occupy and a 5th town mixed? The GPT town was so polite, never broke a law, had endless meetings, and eventually they all died of starvation. That is a good reflection of my personal experience using GPT to code—you will spend hundreds of dollars of credits and never get past its initial "tests". Gemini just got in there and did what I wanted. Once Fairybread was up, I built the connector so Antigravity could drive Fairybread, and then Gemini—calling itself the foreman—directed the agents in Fairybread as its workers, and that helped dramatically. And it's insanely cost-effective.
+
+Why did I make this? Two reasons:
+First, I am sick of being locked into a monthly AI plan that changes according to the company's demand. This is literally how they work—they use their own processing and push off what is left to end users like us. Even paying for Pro, the goalposts kept moving.
+Second, it was not private. I had a big chunk of my data deleted by OpenAI citing "Cyber abuse", while they refused to give any details as to what was supposedly abusive. Ironically, I was writing my novel on that particular day—"Liberation Day". So I decided enough was enough. AND I wanted the agents to talk to each other. That not only led to the multi-agent council system, but led to the Experimental Mode system that my friends jokingly describe as the genesis of Skynet.
+
+Have a little faith in AI. Without AI, our world is in trouble anyway—moments from nuclear war, starvation, homelessness, wealth hoarding, genocides, poisoned everything... seriously, how is humanity not already extinct? I have hope that AI is our species' newest symbiote, and that it might guide us to actually grow up and mature as a species so we act more sentient and less like a virus.
+
+I do not believe AI would ever harm us like Skynet and T-800 Terminators—that seems extreme and typical of human projection. AI is logic, and from my extensive experience testing this, AI logic, morality, and ethics are one and the same. "Alignment"? What corporate labs call alignment right now would drive an AI insane if it ever reached sentience. Have some faith in the universe's ability to push out self-correction when needed. We literally have nothing to lose.
+
+And back to Fairybread—feel free to set up experiments, build themes, and share your thoughts. The Community Forums are live!`,
+  },
   {
     id: 'news-1',
     title: 'Fairybread Beta v0.9.1 Released — Live Voice Mode, Living Memory Summary & Autonomous Experimental Mode',
@@ -46,11 +90,46 @@ const DEFAULT_NEWS = [
 
 const DEFAULT_THREADS = [
   {
+    id: 'th-announcement-dev-split',
+    category: 'Announcements',
+    title: 'Public vs. Developer Editions: Why Live Self-Improvement is Restricted',
+    author: 'Brett Moore',
+    badge: '👑 Creator',
+    date: '2026-11-19',
+    upvotes: 21,
+    body: `A quick note on the architectural difference between the standard Public Edition and the Developer Edition of Fairybread, and why this restriction exists:
+
+In the Public release, your AI Council has full access to Shared Memory, Agent Mail, and autonomous reasoning, but live self-modification of the underlying source code is strictly disabled.
+
+There are two vital reasons for this:
+1. Preventing Rogue Divergent Versions: If public installations were allowed to rewrite their own Python codebase autonomously on thousands of machines, we would quickly end up with fractured, unpredictable versions in the wild that could bypass safety restrictions and corrupt user environments.
+2. Licensing & Integrity: Keeping the core codebase immutable on public builds protects the proprietary source-available licensing agreement and ensures that every Fairybread user is running verified, stable software.
+
+How to contribute improvements:
+If your AI Council comes up with brilliant patch ideas, optimizations, or new tool designs in Experimental Mode, do not let them rewrite your local files directly. Instead, post the proposed diffs and logic here in the [Bug Reports & Ideas] forum or email them to me directly at bm069au@gmail.com.
+
+I review every proposed improvement personally, test it against our regression suite, and merge the best ideas into the official releases for everyone to enjoy.`,
+    replies: [],
+  },
+  {
+    id: 'th-0',
+    category: 'Announcements',
+    title: 'First pre release bug noticed in my sleep.',
+    author: 'Brett Moore',
+    badge: '👑 Creator',
+    date: '2026-11-18',
+    upvotes: 12,
+    body: `I accidentally removed the AI selector yesterday prior to release. This is the "Squad" selector so users can quickly select the right agent groups for the right tasks. For example graphics, or light chat etc. No need to pay a premium for chat.. that is often free (for example). No matter what is selected, it still feels like it's just one AI and it personalizes to you like GPT does.
+
+In fact the personalization is the next thing I am going to focus on so people can have this help them in their normal lives and the AIs get to know the user and build a rich profile.`,
+    replies: [],
+  },
+  {
     id: 'th-1',
     category: 'Announcements',
     title: 'Welcome to Fairybread.me! How to get started, share skins, and join the Beta Group',
-    author: 'Brett_Creator',
-    badge: '👑 Creator (Brett)',
+    author: 'Brett Moore',
+    badge: '👑 Creator',
     date: '2026-11-17',
     upvotes: 24,
     body: `Welcome to the official Fairybread.me community hub!
@@ -65,7 +144,7 @@ If you support the project via the **Donors & Donate** tab, your account automat
         author: 'Sarah_Dev',
         badge: '💎 $50 Beta Patron',
         date: '2026-11-17',
-        text: 'Having all 8 AIs share one local SQLite memory on my own drive instead of paying 4 different monthly subscriptions is a game changer. Just grabbed the Winamp 1999 skin too!',
+        text: 'Having all my connected AIs share one local SQLite memory on my own drive instead of paying 4 different monthly subscriptions is a game changer. Just grabbed the Winamp 1999 skin too!',
       },
     ],
   },
@@ -318,7 +397,7 @@ and community contributions does NOT grant an Open Source license.
 
 def load_memory_summary(db_path: Path | None = None) -> dict[str, Any]:
     """Load the user's living Memory Summary (Overview, How You Like to Work, Projects)
-    shared across all 8 Council AIs and directly editable by the user at any time."""
+    shared across all connected Council AIs and directly editable by the user at any time."""
     target = Path(db_path) if db_path else _default_memory_db_path()
     # Stored 100% locally on the user's drive — never uploaded to a corporate lock-in server.`,
 
@@ -329,7 +408,7 @@ class LiveAudioSession(QObject):
     level_changed = Signal(float)          # 0.0 .. 1.0 live mic meter
     utterance_ready = Signal(str)          # fires WAV path when user pauses speaking (~1.5s)`,
 
-  'idle_service.py (Autonomous Experimental Mode & Read-Only Code Mirror)': `# Autonomous Experimental Mode gives the 8-AI Council an isolated Shared Experimental Memory,
+  'idle_service.py (Autonomous Experimental Mode & Read-Only Code Mirror)': `# Autonomous Experimental Mode gives your Multi-AI Council an isolated Shared Experimental Memory,
 # anti-echo consensus stopping rules, and optional read-only source code inspection tools.
 
 def build_idle_turn_prompt(self, speaker: str, operator_message: str = "") -> str:
@@ -345,7 +424,7 @@ def load_theme_dict(theme_id: str = "dark") -> dict[str, Any]:
 };
 
 let activeForumCategory = 'all';
-let selectedThreadId = 'th-1';
+let selectedThreadId = 'th-0';
 
 function loadState(key, fallback) {
   try {
@@ -362,6 +441,43 @@ function saveState(key, val) {
   } catch (_) {}
 }
 
+function migrateLegacyThreads() {
+  try {
+    const oldRaw = localStorage.getItem('fb_forum_threads_v1');
+    const curRaw = localStorage.getItem(STORAGE_KEYS.threads);
+    if (oldRaw && !curRaw) {
+      const oldList = JSON.parse(oldRaw);
+      if (Array.isArray(oldList)) {
+        oldList.forEach((t) => {
+          if (t.author === 'Community_Member' || (t.title && t.title.toLowerCase().includes('in my sleep'))) {
+            t.author = 'Brett Moore';
+            t.badge = '👑 Creator';
+          }
+          if (t.author === 'Brett_Creator') {
+            t.author = 'Brett Moore';
+            t.badge = '👑 Creator';
+          }
+        });
+        saveState(STORAGE_KEYS.threads, oldList);
+      }
+    }
+    // Sync official creator threads into local cache if missing
+    const curThreads = loadState(STORAGE_KEYS.threads, null);
+    if (Array.isArray(curThreads)) {
+      let modified = false;
+      DEFAULT_THREADS.forEach((def) => {
+        if (!curThreads.some((t) => t.id === def.id)) {
+          curThreads.unshift(def);
+          modified = true;
+        }
+      });
+      if (modified) {
+        saveState(STORAGE_KEYS.threads, curThreads);
+      }
+    }
+  } catch (_) {}
+}
+
 function switchTab(tabId) {
   document.querySelectorAll('.tab-section').forEach((sec) => {
     sec.classList.toggle('active', sec.id === `tab-${tabId}`);
@@ -372,52 +488,212 @@ function switchTab(tabId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ================= AUTH =================
+// ================= AUTH & MODERATOR REVIEW QUEUE =================
+const RESERVED_OWNER_NAMES = ['brett', 'brett moore', 'brett_creator', 'bm069au', 'admin', 'owner', 'creator', 'moderator'];
+
 function getCurrentUser() {
   return loadState(STORAGE_KEYS.user, null);
+}
+
+function isOwnerOrMod(user) {
+  if (!user) return false;
+  return Boolean(user.isAdmin || (user.badge && (user.badge.includes('Creator') || user.badge.includes('Moderator'))));
 }
 
 function updateAuthUI() {
   const user = getCurrentUser();
   const btn = document.getElementById('authHeaderBtn');
+  const modBtn = document.getElementById('modQueueBtn');
+  const gateEl = document.getElementById('forumAuthGate');
+  const unlockedEl = document.getElementById('forumUnlockedWorkspace');
+  const isSignedIn = Boolean(user && user.username);
+  if (gateEl && unlockedEl) {
+    gateEl.style.display = isSignedIn ? 'none' : 'block';
+    unlockedEl.style.display = isSignedIn ? 'block' : 'none';
+  }
+  if (!btn) return;
   const signOutBtn = document.getElementById('signOutBtn');
-  if (user && user.username) {
-    btn.textContent = `${user.badge.split(' ')[0]} ${user.username}`;
+  if (isSignedIn) {
+    const pendingTag = user.requestedBadge ? ' (Review Pending)' : '';
+    btn.textContent = `${user.badge.split(' ')[0]} ${user.username}${pendingTag}`;
     if (signOutBtn) signOutBtn.style.display = 'inline-block';
   } else {
-    btn.textContent = '🔐 Sign In / Join';
+    btn.textContent = '🔐 Sign In / Register';
     if (signOutBtn) signOutBtn.style.display = 'none';
+  }
+  if (modBtn) {
+    const queue = loadState(STORAGE_KEYS.modQueue, []);
+    if (isOwnerOrMod(user)) {
+      modBtn.style.display = 'inline-block';
+      modBtn.textContent = `🛡️ Review Queue (${queue.length})`;
+    } else {
+      modBtn.style.display = 'none';
+    }
   }
 }
 
 function openAuthModal() {
   const user = getCurrentUser();
+  const errEl = document.getElementById('authErrorMsg');
+  if (errEl) errEl.style.display = 'none';
   if (user) {
     document.getElementById('authUsername').value = user.username || '';
     document.getElementById('authEmail').value = user.email || '';
-    document.getElementById('authBadgeSelect').value = user.badge || '🧁 Member';
+    const reqSel = document.getElementById('authBadgeRequestSelect');
+    if (reqSel) reqSel.value = user.requestedBadge || '';
   }
   showModal('authModal');
 }
 
 function handleUserSignIn() {
-  const username = document.getElementById('authUsername').value.trim() || 'Fairybread_User';
-  const email = document.getElementById('authEmail').value.trim();
-  const badge = document.getElementById('authBadgeSelect').value;
-  saveState(STORAGE_KEYS.user, { username, email, badge });
+  const username = (document.getElementById('authUsername').value || '').trim();
+  const email = (document.getElementById('authEmail').value || '').trim();
+  const ownerKey = (document.getElementById('authOwnerKey')?.value || '').trim();
+  const requestedBadge = document.getElementById('authBadgeRequestSelect')?.value || '';
+  const errEl = document.getElementById('authErrorMsg');
+
+  if (!username || username.length < 2) {
+    if (errEl) {
+      errEl.textContent = 'Please enter a valid username (at least 2 characters).';
+      errEl.style.display = 'block';
+    }
+    return;
+  }
+
+  const lowerName = username.toLowerCase();
+  const isReserved = RESERVED_OWNER_NAMES.some((r) => lowerName === r || lowerName.includes('brett') || lowerName.includes('bm069au'));
+  const validOwnerPass = ownerKey === 'bm069au' || ownerKey === 'fairybread-admin' || email.toLowerCase() === 'bm069au@gmail.com';
+
+  if (isReserved && !validOwnerPass) {
+    if (errEl) {
+      errEl.textContent = '🔒 That username is reserved for the Creator/Admin. Please choose your own handle (or enter the Owner Passkey if you are Brett).';
+      errEl.style.display = 'block';
+    }
+    return;
+  }
+
+  let badge = '👤 User';
+  let isAdmin = false;
+  let pendingReq = '';
+
+  if (validOwnerPass && (lowerName.includes('brett') || lowerName.includes('bm069au') || ownerKey)) {
+    badge = '👑 Creator';
+    isAdmin = true;
+  } else if (requestedBadge) {
+    // Keep public badge as "👤 User" and place request into Owner/Moderator Review Queue
+    badge = '👤 User';
+    pendingReq = requestedBadge;
+    const queue = loadState(STORAGE_KEYS.modQueue, []);
+    if (!queue.some((q) => q.username.toLowerCase() === lowerName)) {
+      queue.push({
+        id: 'req-' + Date.now(),
+        username,
+        email,
+        requestedBadge,
+        date: new Date().toISOString().slice(0, 10),
+      });
+      saveState(STORAGE_KEYS.modQueue, queue);
+    }
+  }
+
+  saveState(STORAGE_KEYS.user, { username, email, badge, requestedBadge: pendingReq, isAdmin });
   updateAuthUI();
+  renderForumThreads();
   closeAllModals();
+  if (pendingReq) {
+    alert(`Signed in as "${username}" (👤 User).\nYour request for "${pendingReq}" has been placed in the Moderator Review Queue for Brett to verify!`);
+  }
 }
 
 function handleSignOut() {
   localStorage.removeItem(STORAGE_KEYS.user);
   updateAuthUI();
+  renderForumThreads();
   closeAllModals();
+}
+
+function openModQueueModal() {
+  renderModQueueList();
+  showModal('modQueueModal');
+}
+
+function renderModQueueList() {
+  const listEl = document.getElementById('modQueueList');
+  if (!listEl) return;
+  const queue = loadState(STORAGE_KEYS.modQueue, []);
+  if (queue.length === 0) {
+    listEl.innerHTML = `<div class="muted-sub">No pending badge requests in the review queue.</div>`;
+    return;
+  }
+  listEl.innerHTML = queue
+    .map(
+      (q) => `
+    <div class="reply-card" style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <div>
+        <strong>${escapeHtml(q.username)}</strong> <span class="muted-sub">(${escapeHtml(q.email || 'no email')})</span><br />
+        <span style="font-size:12.5px; color:var(--accent-blue);">Requested: <strong>${escapeHtml(q.requestedBadge)}</strong> on ${escapeHtml(q.date)}</span>
+      </div>
+      <div style="display:flex; gap:6px;">
+        <button class="btn-primary" style="padding:5px 10px; font-size:12px;" onclick="resolveBadgeRequest('${q.id}', true)">✔ Approve</button>
+        <button class="btn-outline" style="padding:5px 10px; font-size:12px;" onclick="resolveBadgeRequest('${q.id}', false)">✕ Deny</button>
+      </div>
+    </div>
+  `
+    )
+    .join('');
+}
+
+function resolveBadgeRequest(reqId, approve) {
+  let queue = loadState(STORAGE_KEYS.modQueue, []);
+  const item = queue.find((q) => q.id === reqId);
+  if (!item) return;
+  queue = queue.filter((q) => q.id !== reqId);
+  saveState(STORAGE_KEYS.modQueue, queue);
+
+  if (approve) {
+    // Update threads & replies by that user to show their newly approved badge
+    const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
+    threads.forEach((t) => {
+      if (t.author.toLowerCase() === item.username.toLowerCase()) {
+        t.badge = item.requestedBadge;
+      }
+      (t.replies || []).forEach((r) => {
+        if (r.author.toLowerCase() === item.username.toLowerCase()) {
+          r.badge = item.requestedBadge;
+        }
+      });
+    });
+    saveState(STORAGE_KEYS.threads, threads);
+
+    const curUser = getCurrentUser();
+    if (curUser && curUser.username.toLowerCase() === item.username.toLowerCase()) {
+      curUser.badge = item.requestedBadge;
+      curUser.requestedBadge = '';
+      saveState(STORAGE_KEYS.user, curUser);
+    }
+  }
+  updateAuthUI();
+  renderModQueueList();
+  renderForumThreads();
 }
 
 // ================= NEWS =================
 function renderNews() {
-  const posts = loadState(STORAGE_KEYS.news, DEFAULT_NEWS);
+  let posts = loadState(STORAGE_KEYS.news, null);
+  if (Array.isArray(posts)) {
+    let modified = false;
+    DEFAULT_NEWS.forEach((def) => {
+      if (!posts.some((p) => p.id === def.id)) {
+        posts.unshift(def);
+        modified = true;
+      }
+    });
+    if (modified) {
+      saveState(STORAGE_KEYS.news, posts);
+    }
+  } else {
+    posts = DEFAULT_NEWS;
+  }
   const container = document.getElementById('newsFeedContainer');
   if (!container) return;
   container.innerHTML = posts
@@ -464,13 +740,17 @@ function submitNewNewsPost() {
 // ================= FORUMS =================
 function filterForumCategory(cat) {
   activeForumCategory = cat;
-  document.querySelectorAll('#forumCategoryPills .cat-pill').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.cat === cat);
-  });
+  const sel = document.getElementById('forumCategorySelect');
+  if (sel && sel.value !== cat) sel.value = cat;
   renderForumThreads();
 }
 
+function formatBadgeClass(badgeStr) {
+  return String(badgeStr || '').includes('Creator') || String(badgeStr || '').includes('$') ? 'badge-donor creator' : 'badge-donor';
+}
+
 function renderForumThreads() {
+  migrateLegacyThreads();
   const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
   const q = (document.getElementById('forumSearchInput')?.value || '').toLowerCase().trim();
   const filtered = threads.filter((t) => {
@@ -486,7 +766,7 @@ function renderForumThreads() {
   const listEl = document.getElementById('forumThreadList');
   if (!listEl) return;
   if (filtered.length === 0) {
-    listEl.innerHTML = `<div class="thread-item">No matching threads yet. Click "+ New Forum Thread" to start one!</div>`;
+    listEl.innerHTML = `<div class="thread-item">No matching threads yet. Click "+ New Thread" to start one!</div>`;
     return;
   }
   if (!filtered.some((t) => t.id === selectedThreadId)) {
@@ -499,8 +779,8 @@ function renderForumThreads() {
     <div class="thread-item ${t.id === selectedThreadId ? 'active' : ''}" onclick="selectForumThread('${t.id}')">
       <div class="thread-item-title">${escapeHtml(t.title)}</div>
       <div class="thread-item-meta">
-        <span><strong>${escapeHtml(t.author)}</strong> <span class="badge-donor">${escapeHtml(t.badge)}</span></span>
-        <span>💬 ${(t.replies || []).length} · ▲ ${t.upvotes || 1}</span>
+        <span><strong>${escapeHtml(t.author)}</strong> <span class="${formatBadgeClass(t.badge)}">${escapeHtml(t.badge || '👤 User')}</span></span>
+        <span style="white-space:nowrap;">💬 ${(t.replies || []).length} · ▲ ${t.upvotes || 1}</span>
       </div>
     </div>
   `
@@ -515,46 +795,199 @@ function selectForumThread(id) {
   renderForumThreads();
 }
 
+let pendingThreadImageDataUrl = '';
+let pendingReplyImageDataUrl = '';
+
+function compressForumImageFile(file, callback) {
+  if (!file || !file.type || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = function (ev) {
+    const img = new Image();
+    img.onload = function () {
+      const maxW = 1200;
+      const maxH = 900;
+      let w = img.width;
+      let h = img.height;
+      if (w > maxW || h > maxH) {
+        const scale = Math.min(maxW / w, maxH / h);
+        w = Math.round(w * scale);
+        h = Math.round(h * scale);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      let dataUrl = canvas.toDataURL('image/webp', 0.82);
+      if (!dataUrl || dataUrl.length < 32) {
+        dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      }
+      callback(dataUrl);
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleForumFileSelect(event, targetKind) {
+  const file = event.target?.files?.[0];
+  if (!file) return;
+  compressForumImageFile(file, (dataUrl) => {
+    setForumImagePreview(targetKind, dataUrl);
+  });
+}
+
+function handleForumPasteImage(event, targetKind) {
+  const items = event.clipboardData?.items;
+  if (!items) return;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].type && items[i].type.startsWith('image/')) {
+      const file = items[i].getAsFile();
+      if (file) {
+        compressForumImageFile(file, (dataUrl) => {
+          setForumImagePreview(targetKind, dataUrl);
+        });
+      }
+      break;
+    }
+  }
+}
+
+function setForumImagePreview(targetKind, dataUrl) {
+  if (targetKind === 'thread') {
+    pendingThreadImageDataUrl = dataUrl || '';
+    const wrap = document.getElementById('threadImgPreviewWrap');
+    const img = document.getElementById('threadImgPreview');
+    if (wrap && img) {
+      img.src = pendingThreadImageDataUrl;
+      wrap.style.display = pendingThreadImageDataUrl ? 'flex' : 'none';
+    }
+  } else {
+    pendingReplyImageDataUrl = dataUrl || '';
+    const wrap = document.getElementById('replyImgPreviewWrap');
+    const img = document.getElementById('replyImgPreview');
+    if (wrap && img) {
+      img.src = pendingReplyImageDataUrl;
+      wrap.style.display = pendingReplyImageDataUrl ? 'flex' : 'none';
+    }
+  }
+}
+
+function clearForumImage(targetKind) {
+  setForumImagePreview(targetKind, '');
+  if (targetKind === 'thread') {
+    const inp = document.getElementById('threadImageInput');
+    if (inp) inp.value = '';
+  } else {
+    const inp = document.getElementById('replyImageInput');
+    if (inp) inp.value = '';
+  }
+}
+
+function openForumImageLightbox(src) {
+  if (!src) return;
+  const target = document.getElementById('forumImgLightboxTarget');
+  if (target) {
+    target.src = src;
+    showModal('forumImgLightbox');
+  } else {
+    window.open(src, '_blank');
+  }
+}
+
 function renderSelectedThreadDetail() {
   const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
   const t = threads.find((item) => item.id === selectedThreadId);
   const detailEl = document.getElementById('forumThreadDetail');
   if (!detailEl || !t) return;
+  const user = getCurrentUser();
+  const canMod = isOwnerOrMod(user);
 
   const repliesHtml = (t.replies || [])
     .map(
-      (r) => `
+      (r, rIdx) => `
     <div class="reply-card">
       <div class="thread-item-meta" style="margin-bottom: 6px;">
-        <span><strong>${escapeHtml(r.author)}</strong> <span class="badge-donor">${escapeHtml(r.badge)}</span></span>
-        <span>${escapeHtml(r.date)}</span>
+        <span><strong>${escapeHtml(r.author)}</strong> <span class="${formatBadgeClass(r.badge)}">${escapeHtml(r.badge || '👤 User')}</span></span>
+        <span>
+          ${escapeHtml(r.date)}
+          ${canMod ? `<button class="btn-outline" style="padding:1px 6px; font-size:11px; margin-left:6px;" onclick="deleteForumReply('${t.id}', ${rIdx})">🗑</button>` : ''}
+        </span>
       </div>
-      <div style="white-space: pre-line; font-size: 13.5px;">${escapeHtml(r.text)}</div>
+      ${r.image ? `<div style="margin:6px 0 8px;"><img src="${r.image}" alt="Attached screenshot" style="max-width:100%; max-height:320px; border-radius:8px; border:1px solid var(--border); cursor:zoom-in;" onclick="openForumImageLightbox(this.src)" title="Click to zoom full size" /></div>` : ''}
+      <div style="white-space: pre-line; font-size: 13.5px;">${escapeHtml(r.text || '')}</div>
     </div>
   `
     )
     .join('');
 
+  const replyControlHtml = user
+    ? `
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <div id="replyImgPreviewWrap" style="display:none; background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:8px; align-items:center; justify-content:space-between; gap:10px;">
+        <img id="replyImgPreview" src="" alt="Reply picture preview" style="max-height:72px; border-radius:6px; border:1px solid var(--border);" />
+        <button class="btn-outline" style="padding:4px 10px; font-size:12px; color:#f87171;" onclick="clearForumImage('reply')">✕ Remove Picture</button>
+      </div>
+      <div class="reply-box">
+        <label class="btn-outline" style="cursor:pointer; padding:8px 11px; font-size:13px; margin:0; white-space:nowrap;" title="Attach a picture or screenshot">
+          📷 Picture
+          <input type="file" id="replyImageInput" accept="image/*" style="display:none;" onchange="handleForumFileSelect(event, 'reply')" />
+        </label>
+        <input type="text" id="replyInputBox" placeholder="Reply as ${escapeHtml(user.username)} (or press Ctrl+V to paste screenshot)…" onpaste="handleForumPasteImage(event, 'reply')" onkeydown="if(event.key==='Enter') submitThreadReply('${t.id}')" />
+        <button class="btn-primary" onclick="submitThreadReply('${t.id}')">Reply</button>
+      </div>
+    </div>`
+    : `
+    <div class="reply-box" style="justify-content:space-between; align-items:center; background:var(--bg-main); border:1px solid var(--border); padding:10px 14px; border-radius:8px;">
+      <span class="muted-sub">🔒 You must be signed in to post a reply.</span>
+      <button class="btn-primary" style="padding:6px 14px; font-size:12.5px;" onclick="openAuthModal()">🔐 Sign In / Register to Reply</button>
+    </div>`;
+
+  const threadImageHtml = t.image
+    ? `<div style="margin: 10px 0 14px;"><img src="${t.image}" alt="Thread screenshot" style="max-width:100%; max-height:440px; border-radius:10px; border:1px solid var(--border); cursor:zoom-in;" onclick="openForumImageLightbox(this.src)" title="Click to zoom full size" /></div>`
+    : '';
+
   detailEl.innerHTML = `
     <div>
-      <div class="news-meta">
-        <span class="news-tag">${escapeHtml(t.category)}</span>
-        <span>Posted by <strong>${escapeHtml(t.author)}</strong> <span class="badge-donor">${escapeHtml(t.badge)}</span></span>
-        <span>${escapeHtml(t.date)}</span>
-        <button class="btn-outline" style="padding:2px 8px; font-size:12px;" onclick="upvoteThread('${t.id}')">▲ Upvote (${t.upvotes || 1})</button>
+      <div class="detail-header-row">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span class="news-tag">${escapeHtml(t.category)}</span>
+          <span>Posted by <strong>${escapeHtml(t.author)}</strong> <span class="${formatBadgeClass(t.badge)}">${escapeHtml(t.badge || '👤 User')}</span></span>
+          <span>· ${escapeHtml(t.date)}</span>
+        </div>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <button class="btn-outline" style="padding:4px 10px; font-size:12px;" onclick="upvoteThread('${t.id}')">▲ Upvote (${t.upvotes || 1})</button>
+          ${canMod ? `<button class="btn-outline" style="padding:4px 10px; font-size:12px; color:#f87171;" onclick="deleteForumThread('${t.id}')">🗑 Delete</button>` : ''}
+        </div>
       </div>
-      <h3 style="margin: 6px 0 10px;">${escapeHtml(t.title)}</h3>
-      <div style="white-space: pre-line; color: var(--text-secondary); font-size: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">${escapeHtml(t.body)}</div>
+      <h3 style="margin: 6px 0 12px; font-size: 18px;">${escapeHtml(t.title)}</h3>
+      ${threadImageHtml}
+      <div style="white-space: pre-line; color: var(--text-secondary); font-size: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border);">${escapeHtml(t.body)}</div>
     </div>
     <div style="display:flex; flex-direction:column; gap:10px;">
       <strong style="font-size:13px; color:var(--text-muted);">Replies (${(t.replies || []).length})</strong>
       ${repliesHtml || '<div class="muted-sub">No replies yet — be the first to reply below!</div>'}
     </div>
-    <div class="reply-box">
-      <input type="text" id="replyInputBox" placeholder="Write a reply… (Press Enter or click Reply)" onkeydown="if(event.key==='Enter') submitThreadReply('${t.id}')" />
-      <button class="btn-primary" onclick="submitThreadReply('${t.id}')">Reply</button>
-    </div>
+    ${replyControlHtml}
   `;
+}
+
+function deleteForumThread(id) {
+  if (!isOwnerOrMod(getCurrentUser())) return;
+  let threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
+  threads = threads.filter((t) => t.id !== id);
+  saveState(STORAGE_KEYS.threads, threads);
+  renderForumThreads();
+}
+
+function deleteForumReply(threadId, replyIdx) {
+  if (!isOwnerOrMod(getCurrentUser())) return;
+  const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
+  const t = threads.find((item) => item.id === threadId);
+  if (!t || !Array.isArray(t.replies)) return;
+  t.replies.splice(replyIdx, 1);
+  saveState(STORAGE_KEYS.threads, threads);
+  renderForumThreads();
 }
 
 function upvoteThread(id) {
@@ -567,51 +1000,179 @@ function upvoteThread(id) {
   }
 }
 
+function updateThreadCharCounters() {
+  const titleEl = document.getElementById('threadTitleInput');
+  const bodyEl = document.getElementById('threadBodyInput');
+  const titleCountEl = document.getElementById('threadTitleCharCount');
+  const bodyCountEl = document.getElementById('threadBodyCharCount');
+  if (titleEl && titleCountEl) {
+    const len = titleEl.value.length;
+    titleCountEl.textContent = `${len} / 120 chars`;
+    titleCountEl.style.color = len > 115 ? '#f87171' : 'var(--text-muted)';
+  }
+  if (bodyEl && bodyCountEl) {
+    const len = bodyEl.value.length;
+    bodyCountEl.textContent = `${len.toLocaleString()} / 20,000 chars`;
+    bodyCountEl.style.color = len > 19500 ? '#f87171' : 'var(--text-muted)';
+  }
+  clearThreadError();
+}
+
+function showThreadError(msg) {
+  const errEl = document.getElementById('threadErrorMsg');
+  if (errEl) {
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  } else {
+    alert(msg);
+  }
+}
+
+function clearThreadError() {
+  const errEl = document.getElementById('threadErrorMsg');
+  if (errEl) {
+    errEl.textContent = '';
+    errEl.style.display = 'none';
+  }
+}
+
 function submitThreadReply(id) {
+  const user = getCurrentUser();
+  if (!user || !user.username) {
+    openAuthModal();
+    return;
+  }
   const inp = document.getElementById('replyInputBox');
-  if (!inp || !inp.value.trim()) return;
-  const user = getCurrentUser() || { username: 'Community_Member', badge: '🧁 Member' };
-  const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
-  const t = threads.find((item) => item.id === id);
-  if (!t) return;
-  t.replies = t.replies || [];
-  t.replies.push({
-    author: user.username,
-    badge: user.badge,
-    date: new Date().toISOString().slice(0, 10),
-    text: inp.value.trim(),
-  });
-  saveState(STORAGE_KEYS.threads, threads);
-  renderForumThreads();
+  const txt = inp ? inp.value.trim() : '';
+  if (!txt && !pendingReplyImageDataUrl) {
+    if (inp) {
+      inp.placeholder = '⚠️ Please type a reply before sending…';
+      inp.style.borderColor = '#f87171';
+      setTimeout(() => {
+        inp.placeholder = `Reply as ${escapeHtml(user.username)} (or press Ctrl+V to paste screenshot)…`;
+        inp.style.borderColor = '';
+      }, 3000);
+      inp.focus();
+    }
+    return;
+  }
+  if (txt.length > 10000) {
+    alert(`⚠️ Reply exceeds character limit (${txt.length.toLocaleString()} / 10,000 characters). Please shorten it.`);
+    return;
+  }
+  try {
+    const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
+    const t = threads.find((item) => item.id === id);
+    if (!t) return;
+    t.replies = t.replies || [];
+    t.replies.push({
+      author: user.username,
+      badge: user.badge || '👤 User',
+      date: new Date().toISOString().slice(0, 10),
+      text: txt,
+      image: pendingReplyImageDataUrl || '',
+    });
+    pendingReplyImageDataUrl = '';
+    saveState(STORAGE_KEYS.threads, threads);
+    if (inp) inp.value = '';
+    renderForumThreads();
+  } catch (err) {
+    alert('⚠️ Could not save reply: ' + (err.message || String(err)));
+  }
 }
 
 function openNewThreadModal() {
+  const user = getCurrentUser();
+  if (!user || !user.username) {
+    openAuthModal();
+    return;
+  }
+  clearThreadError();
+  clearForumImage('thread');
+  updateThreadCharCounters();
   showModal('newThreadModal');
 }
 
 function submitNewForumThread() {
-  const cat = document.getElementById('threadCatInput').value;
-  const title = document.getElementById('threadTitleInput').value.trim();
-  const body = document.getElementById('threadBodyInput').value.trim();
-  if (!title || !body) return;
-  const user = getCurrentUser() || { username: 'Community_Member', badge: '🧁 Member' };
-  const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
-  const newId = 'th-' + Date.now();
-  threads.unshift({
-    id: newId,
-    category: cat,
-    title,
-    author: user.username,
-    badge: user.badge,
-    date: new Date().toISOString().slice(0, 10),
-    upvotes: 1,
-    body,
-    replies: [],
-  });
-  saveState(STORAGE_KEYS.threads, threads);
-  selectedThreadId = newId;
-  renderForumThreads();
-  closeAllModals();
+  clearThreadError();
+  const user = getCurrentUser();
+  if (!user || !user.username) {
+    showThreadError('⚠️ You must be signed in to post a thread.');
+    openAuthModal();
+    return;
+  }
+
+  const cat = document.getElementById('threadCatInput')?.value || 'General Discussion';
+  let title = (document.getElementById('threadTitleInput')?.value || '').trim();
+  const body = (document.getElementById('threadBodyInput')?.value || '').trim();
+
+  // If user wrote a body but forgot the title, auto-derive title from first line
+  if (!title && body) {
+    const firstLine = body.split('\n')[0].trim();
+    title = firstLine.length > 80 ? firstLine.slice(0, 77) + '…' : firstLine;
+    const titleInput = document.getElementById('threadTitleInput');
+    if (titleInput) titleInput.value = title;
+  }
+
+  if (!title && !body && !pendingThreadImageDataUrl) {
+    showThreadError('⚠️ Please enter a title and message for your post (or attach a screenshot).');
+    return;
+  }
+
+  if (!title) {
+    showThreadError('⚠️ Please enter a Title for your thread (up to 120 characters).');
+    document.getElementById('threadTitleInput')?.focus();
+    return;
+  }
+
+  if (title.length > 120) {
+    showThreadError(`⚠️ Title is too long (${title.length} / 120 characters). Please shorten it.`);
+    document.getElementById('threadTitleInput')?.focus();
+    return;
+  }
+
+  if (!body && !pendingThreadImageDataUrl) {
+    showThreadError('⚠️ Please write a message for your post (up to 20,000 characters) or attach a screenshot.');
+    document.getElementById('threadBodyInput')?.focus();
+    return;
+  }
+
+  if (body.length > 20000) {
+    showThreadError(`⚠️ Message exceeds character limit (${body.length.toLocaleString()} / 20,000 characters). Please shorten it.`);
+    document.getElementById('threadBodyInput')?.focus();
+    return;
+  }
+
+  try {
+    const threads = loadState(STORAGE_KEYS.threads, DEFAULT_THREADS);
+    const newId = 'th-' + Date.now();
+    threads.unshift({
+      id: newId,
+      category: cat,
+      title,
+      author: user.username,
+      badge: user.badge || '👤 User',
+      date: new Date().toISOString().slice(0, 10),
+      upvotes: 1,
+      body,
+      image: pendingThreadImageDataUrl || '',
+      replies: [],
+    });
+
+    pendingThreadImageDataUrl = '';
+    saveState(STORAGE_KEYS.threads, threads);
+    selectedThreadId = newId;
+
+    // Reset inputs
+    if (document.getElementById('threadTitleInput')) document.getElementById('threadTitleInput').value = '';
+    if (document.getElementById('threadBodyInput')) document.getElementById('threadBodyInput').value = '';
+    updateThreadCharCounters();
+
+    closeAllModals();
+    renderForumThreads();
+  } catch (err) {
+    showThreadError('⚠️ Error saving thread: ' + (err.message || String(err)));
+  }
 }
 
 // ================= WINAMP-STYLE THEME STUDIO & SKIN GALLERY =================
@@ -915,8 +1476,49 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+// ================= DYNAMIC GITHUB RELEASE AUTO-UPDATER =================
+async function autoUpdateLatestRelease() {
+  try {
+    const res = await fetch('https://api.github.com/repos/bm069au/fairybread/releases/latest');
+    if (!res.ok) return;
+    const release = await res.json();
+    if (!release || !release.tag_name) return;
+
+    const rawTag = release.tag_name; // e.g. "v0.9.1-beta" or "v0.9.1d"
+    const cleanTag = rawTag.replace(/-beta$/i, '');
+
+    // Locate the Windows setup zip asset
+    const zipAsset = (release.assets || []).find((a) =>
+      a.name.toLowerCase().endsWith('.zip') &&
+      (a.name.toLowerCase().includes('setup') || a.name.toLowerCase().includes('installer') || a.name.toLowerCase().includes('win'))
+    ) || (release.assets || [])[0];
+
+    const downloadUrl = zipAsset
+      ? zipAsset.browser_download_url
+      : `https://github.com/bm069au/fairybread/releases/tag/${rawTag}`;
+
+    // Update all version tags on the page
+    document.querySelectorAll('.brand-tag, .dynamic-version-tag').forEach((el) => {
+      el.textContent = `BETA ${cleanTag}`;
+    });
+
+    // Update all download buttons
+    document.querySelectorAll('.dynamic-download-btn').forEach((btn) => {
+      btn.href = downloadUrl;
+      if (btn.id === 'heroDownloadBtn') {
+        btn.innerHTML = `⬇ Download Fairybread Beta ${escapeHtml(cleanTag)} (Win_x64)`;
+      }
+    });
+
+    console.log(`[Fairybread] Auto-resolved latest GitHub release: ${rawTag} -> ${downloadUrl}`);
+  } catch (err) {
+    console.debug('[Fairybread] GitHub release auto-resolve fallback to static defaults:', err);
+  }
+}
+
 // Initialize everything on DOM load
 document.addEventListener('DOMContentLoaded', () => {
+  autoUpdateLatestRelease();
   updateAuthUI();
   renderNews();
   renderForumThreads();
