@@ -1502,8 +1502,8 @@ async function autoUpdateLatestRelease() {
     const rawTag = release.tag_name; // e.g. "v0.92-beta" or "v0.9.1g-beta"
     const cleanTag = rawTag.replace(/-beta$/i, '');
 
-    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.92)
-    const currentSiteVersion = 'v0.92';
+    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.92a)
+    const currentSiteVersion = 'v0.92a';
     if (compareVersionTags(cleanTag, currentSiteVersion) < 0) {
       console.log(`[Fairybread] GitHub latest release (${cleanTag}) is older than site version (${currentSiteVersion}); keeping current version.`);
       return;
