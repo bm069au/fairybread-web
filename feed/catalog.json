@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-20T08:48:22Z",
+  "latest_app_version": "0.92",
+  "release_summary": "Major Beta v0.92: Live Update & Model Catalog Sync, Antigravity-style AI Access Permissions & Write Exclusion List, Bidirectional MCP Bridge (Foreman / Council Member), Fail-Safe Restore Defaults, and VLC-Style Pre-Upgrade Backup Installer.",
+  "download_url": "https://github.com/bm069au/fairybread/releases/download/v0.92-beta/Fairybread_v0.92_beta_Win_x64_Setup.zip",
+  "release_page_url": "https://github.com/bm069au/fairybread/releases/latest",
+  "installer_sha256": "54df7f1a533f00d5bf1ef9bab13e91883fe8a8e1714de5f74269c427e178dce6",
+  "model_token_rates_per_1m": {
+    "gemini-4-neon": [
+      0.5,
+      3.0
+    ],
+    "gemini-4-hydrogen": [
+      0.15,
+      0.6
+    ],
+    "gemini-2.5-pro": [
+      1.25,
+      10.0
+    ],
+    "gemini-2.5-flash-lite": [
+      0.075,
+      0.3
+    ],
+    "gemini-2.5-flash": [
+      0.15,
+      0.6
+    ],
+    "gpt-5.4": [
+      2.5,
+      15.0
+    ],
+    "gpt-5.2": [
+      1.75,
+      14.0
+    ],
+    "gpt-5-mini": [
+      0.25,
+      2.0
+    ],
+    "gpt-5-nano": [
+      0.05,
+      0.4
+    ],
+    "gpt-5": [
+      1.25,
+      10.0
+    ],
+    "gpt-4o-mini": [
+      0.15,
+      0.6
+    ],
+    "gpt-4o": [
+      2.5,
+      10.0
+    ],
+    "deepseek-reasoner": [
+      0.55,
+      2.19
+    ],
+    "deepseek-chat": [
+      0.27,
+      1.1
+    ],
+    "qwen/qwen3.8-27b": [
+      0.15,
+      0.6
+    ],
+    "qwen/": [
+      0.15,
+      0.6
+    ],
+    "codestral-latest": [
+      0.3,
+      0.9
+    ],
+    "gpt-oss-120b": [
+      0.1,
+      0.1
+    ],
+    "command-a-03-2025": [
+      0.0,
+      0.0
+    ]
+  },
+  "tts_cost_per_minute_usd": {
+    "openai:gpt-4o-mini-tts": 0.015,
+    "openai:tts-1": 0.015,
+    "gemini:gemini-3.8-flash-lite-tts": 0.012,
+    "gemini:gemini-3.8-flash-tts": 0.018,
+    "gemini:gemini-2.5-flash-preview-tts": 0.015,
+    "system:sapi5": 0.0
+  },
+  "stt_cost_per_minute_usd": {
+    "groq:whisper-large-v3-turbo": 0.00067,
+    "openai:whisper-1": 0.006,
+    "gemini:gemini-4-hydrogen": 0.002,
+    "gemini:gemini-2.5-flash": 0.002,
+    "gemini:transcribe": 0.002
+  },
+  "image_cost_per_render_usd": {
+    "gemini-3-pro-image": 0.06,
+    "gemini-3.1-flash-image": 0.03,
+    "gpt-image-2": 0.08,
+    "flux-1-dev": 0.025
+  },
+  "provider_catalog_updates": {
+    "gemini": {
+      "default_model": "gemini-4-neon",
+      "suggested_models": [
+        "gemini-4-neon",
+        "gemini-4-hydrogen",
+        "gemini-4-carbon",
+        "gemini-3.8-flash",
+        "gemini-2.5-flash",
+        "gemini-2.5-pro"
+      ],
+      "key_url": "https://aistudio.google.com/app/apikey",
+      "billing_note": "Free tier available via Google AI Studio, or pay-as-you-go via Google Cloud."
+    },
+    "openai": {
+      "default_model": "gpt-4o-mini",
+      "suggested_models": [
+        "gpt-4o-mini",
+        "gpt-4o",
+        "o3-mini"
+      ],
+      "key_url": "https://platform.openai.com/api-keys",
+      "billing_note": "Prepaid credit wallet (turn off auto-recharge for a strict spend cap)."
+    },
+    "anthropic": {
+      "default_model": "claude-3-7-sonnet-latest",
+      "suggested_models": [
+        "claude-3-7-sonnet-latest",
+        "claude-3-5-haiku-latest",
+        "claude-3-5-sonnet-latest"
+      ],
+      "key_url": "https://console.anthropic.com/settings/keys",
+      "billing_note": "Prepaid credit balance via Anthropic Console (OpenAI-compatible /v1 endpoint)."
+    },
+    "xai": {
+      "default_model": "grok-3-mini",
+      "suggested_models": [
+        "grok-3-mini",
+        "grok-3",
+        "grok-2-latest"
+      ],
+      "key_url": "https://console.x.ai/",
+      "billing_note": "Prepaid credits & monthly invoice caps in xAI Console."
+    },
+    "deepseek": {
+      "default_model": "deepseek-chat",
+      "suggested_models": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ],
+      "key_url": "https://platform.deepseek.com/api_keys",
+      "billing_note": "Strict prepaid top-up balance ($2/$5/$10) \u2014 never auto-charges past your balance."
+    },
+    "qwen": {
+      "default_model": "Qwen/Qwen3.8-27B",
+      "suggested_models": [
+        "Qwen/Qwen3.8-27B",
+        "Qwen/Qwen3.8-Flash",
+        "Qwen/Qwen3.8-Max",
+        "Qwen/Qwen3-32B"
+      ],
+      "key_url": "https://deepinfra.com/dash/keys",
+      "billing_note": "Hosted via DeepInfra ($10 balance / set usage limit in Billing) or Alibaba DashScope."
+    },
+    "cohere": {
+      "default_model": "command-a-03-2025",
+      "suggested_models": [
+        "command-a-03-2025",
+        "command-r-plus-08-2024",
+        "command-r-08-2024"
+      ],
+      "key_url": "https://dashboard.cohere.com/api-keys",
+      "billing_note": "Free Trial keys available out of the box, or Production pay-as-you-go keys."
+    },
+    "mistral": {
+      "default_model": "codestral-latest",
+      "suggested_models": [
+        "codestral-latest",
+        "mistral-large-latest",
+        "mistral-small-latest"
+      ],
+      "key_url": "https://console.mistral.ai/api-keys/",
+      "billing_note": "Free Experiment tier available on La Plateforme, or prepaid/pay-as-you-go."
+    },
+    "openrouter": {
+      "default_model": "qwen/qwen3-32b",
+      "suggested_models": [
+        "qwen/qwen3-32b",
+        "anthropic/claude-3.7-sonnet",
+        "deepseek/deepseek-r1",
+        "google/gemini-2.5-pro"
+      ],
+      "key_url": "https://openrouter.ai/settings/keys",
+      "billing_note": "Strict prepaid credit wallet + optional per-key dollar cap. Over 300 models with one key."
+    },
+    "deepinfra": {
+      "default_model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "suggested_models": [
+        "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+        "Qwen/Qwen3.8-27B",
+        "deepseek-ai/DeepSeek-V3"
+      ],
+      "key_url": "https://deepinfra.com/dash/keys",
+      "billing_note": "Prepaid top-up or card-backed; set a Monthly Usage Limit in DeepInfra Billing."
+    },
+    "groq": {
+      "default_model": "llama-3.3-70b-versatile",
+      "suggested_models": [
+        "llama-3.3-70b-versatile",
+        "llama-3.1-8b-instant",
+        "qwen/qwen3.8-27b"
+      ],
+      "key_url": "https://console.groq.com/keys",
+      "billing_note": "Free tier with strict per-minute TPM limits."
+    },
+    "cerebras": {
+      "default_model": "gpt-oss-120b",
+      "suggested_models": [
+        "gpt-oss-120b",
+        "qwen-3.8-27b"
+      ],
+      "key_url": "https://cloud.cerebras.ai/",
+      "billing_note": "Wafer-scale inference: gpt-oss-120b (120B, 5 req/min) with automatic failover to qwen-3.8-27b (450 req/min)."
+    },
+    "together": {
+      "default_model": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "suggested_models": [
+        "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+        "Qwen/Qwen2.5-72B-Instruct-Turbo"
+      ],
+      "key_url": "https://api.together.ai/settings/api-keys",
+      "billing_note": "Prepaid credit wallet for open-weights models."
+    },
+    "perplexity": {
+      "default_model": "sonar-pro",
+      "suggested_models": [
+        "sonar-pro",
+        "sonar",
+        "sonar-reasoning-pro"
+      ],
+      "key_url": "https://www.perplexity.ai/settings/api",
+      "billing_note": "Prepaid API credits with live web-search grounding."
+    },
+    "ollama": {
+      "default_model": "llama3.2",
+      "suggested_models": [
+        "llama3.2",
+        "qwen2.5-coder:14b",
+        "deepseek-r1:14b",
+        "mistral"
+      ],
+      "key_url": "https://ollama.com/download",
+      "billing_note": "100% Free & Offline on your own GPU/CPU (enter any placeholder key like 'local')."
+    }
+  }
+}

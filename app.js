@@ -1476,6 +1476,21 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function compareVersionTags(a, b) {
+  function _parse(v) {
+    const m = String(v || '').trim().match(/^v?(\d+)(?:\.(\d+))?(?:\.(\d+))?([a-z]*)$/i);
+    if (!m) return [0, 0, 0, String(v || '').toLowerCase()];
+    return [parseInt(m[1] || '0', 10), parseInt(m[2] || '0', 10), parseInt(m[3] || '0', 10), String(m[4] || '').toLowerCase()];
+  }
+  const ta = _parse(a);
+  const tb = _parse(b);
+  for (let i = 0; i < 3; i++) {
+    if (ta[i] !== tb[i]) return ta[i] < tb[i] ? -1 : 1;
+  }
+  if (ta[3] === tb[3]) return 0;
+  return ta[3] < tb[3] ? -1 : 1;
+}
+
 // ================= DYNAMIC GITHUB RELEASE AUTO-UPDATER =================
 async function autoUpdateLatestRelease() {
   try {
@@ -1484,12 +1499,12 @@ async function autoUpdateLatestRelease() {
     const release = await res.json();
     if (!release || !release.tag_name) return;
 
-    const rawTag = release.tag_name; // e.g. "v0.9.1-beta" or "v0.9.1d"
+    const rawTag = release.tag_name; // e.g. "v0.92-beta" or "v0.9.1g-beta"
     const cleanTag = rawTag.replace(/-beta$/i, '');
 
-    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.9.1g)
-    const currentSiteVersion = 'v0.9.1g';
-    if (cleanTag < currentSiteVersion) {
+    // Safeguard: Never downgrade if the fetched GitHub release is older than the site's current version (v0.92)
+    const currentSiteVersion = 'v0.92';
+    if (compareVersionTags(cleanTag, currentSiteVersion) < 0) {
       console.log(`[Fairybread] GitHub latest release (${cleanTag}) is older than site version (${currentSiteVersion}); keeping current version.`);
       return;
     }
